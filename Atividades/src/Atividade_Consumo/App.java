@@ -1,4 +1,4 @@
-package Atividade_Polimorfismo;
+package Atividade_Consumo;
 
 public class App {
 	public static void main (String[] args) {

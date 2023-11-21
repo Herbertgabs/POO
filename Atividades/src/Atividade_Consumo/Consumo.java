@@ -1,4 +1,4 @@
-package Atividade_Polimorfismo;
+package Atividade_Consumo;
 import java.util.Date;
 
 public class Consumo {
