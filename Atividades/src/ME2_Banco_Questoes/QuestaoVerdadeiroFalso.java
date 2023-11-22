@@ -1,5 +1,4 @@
 package ME2_Banco_Questoes;
-
 public class QuestaoVerdadeiroFalso extends Questao implements IQuestao{
   private char respostaCorretaA;
   private char respostaCorretaB;
@@ -8,41 +7,43 @@ public class QuestaoVerdadeiroFalso extends Questao implements IQuestao{
   private char respostaMarcadaB;
   private char respostaMarcadaC;
 
-  public QuestaoVerdadeiroFalso(int idQuestao, String enunciado, String opcaoA, String opcaoB, String opcaoC,
+  public QuestaoVerdadeiroFalso(String enunciado, String opcaoA, String opcaoB, String opcaoC,
       double notaPadrao) {
-    super(idQuestao, enunciado, opcaoA, opcaoB, opcaoC, notaPadrao);
-    this.respostaCorretaA = 'F';
-    this.respostaCorretaB = 'V';
-    this.respostaCorretaC = 'F';
+    super(enunciado, opcaoA, opcaoB, opcaoC, notaPadrao);
   }
 
+  @Override
   public double calcularNotaObtida() {
-    double nota = 0;
+    double nota = getNotaPadrao();
     if (respostaMarcadaA == respostaCorretaA) {
-      nota += 1.0;
+      nota += getNotaPadrao();
     }
     if (respostaMarcadaB == respostaCorretaB) {
-      nota += 1.0;
+      nota += getNotaPadrao();
     }
     if (respostaMarcadaC == respostaCorretaC) {
-      nota += 1.0;
+      nota += getNotaPadrao();
     }
     return nota;
   }
 
-  public void marcaOpcao(char respostaMarcada) {
-    int contador = 1;
+  public void marcaOpcao(char opcao, char respostaMarcada) {
     respostaMarcada = Character.toUpperCase(respostaMarcada);
-    if(contador == 1){
-    this.respostaMarcadaA = respostaMarcada;
-    contador++;
+    respostaMarcada = Character.toUpperCase(opcao);
+    if(opcao == 'A'){
+      this.respostaMarcadaA = respostaMarcada;
     }
-    if(contador == 2){
+    if(opcao == 'B'){
       this.respostaMarcadaB = respostaMarcada;
-      contador++;
     }
-    if(contador == 3){
-    this.respostaMarcadaC = respostaMarcada;
+    if(opcao == 'C'){
+      this.respostaMarcadaC = respostaMarcada;
     }
+  }
+
+  @Override
+  public String toString() {
+    return "*** Questao de Verdadeiro ou Falso ***" + "\n Número: " + getIdQuestao() + "\n Enunciado" + getEnunciado() + "\n A - " + getOpcaoA() + " " + respostaMarcadaA + "\n B - " + getOpcaoB() + " " + respostaMarcadaB + " " +
+    "\n C - " + getOpcaoC() + " " + respostaMarcadaC + "\n Nota da Questão: " + getNotaPadrao();
   }
 }

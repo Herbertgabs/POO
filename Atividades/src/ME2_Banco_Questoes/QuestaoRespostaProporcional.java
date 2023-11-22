@@ -1,27 +1,43 @@
 package ME2_Banco_Questoes;
 
 public class QuestaoRespostaProporcional extends Questao implements IQuestao{
-  private char respotaCorretaA;
-  private char respotaCorretaB;
-  private char respotaCorretaC;
-  private char respotaMarcadaA;
-  private char respotaMarcadaB;
-  private char respotaMarcadaC;
+  private char opcaoMarcada;
+  private dobule percentualA;
+  private dobule percentualB;
+  private dobule percentualC;
 
-  public QuestaoRespostaProporcional(int idQuestao, String enunciado, String opcaoA, String opcaoB, String opcaoC,
+  public QuestaoRespostaProporcional(String enunciado, String opcaoA, String opcaoB, String opcaoC,
       double notaPadrao) {
-    super(idQuestao, enunciado, opcaoA, opcaoB, opcaoC, notaPadrao);
+    super(enunciado, opcaoA, opcaoB, opcaoC, notaPadrao);
+    this.percentualA = 0.25;
+    this.percentualB = 0.5;
+    this.percentualC = 1.0;
+  }
+
+  public char getOpcaoMarcada() {
+    return opcaoMarcada;
   }
 
   @Override
   public double calcularNotaObtida() {
-    // TODO Auto-generated method stub
-    return 0;
+    if(opcaoMarcada == 'A'){
+      return getNotaPadrao() * percentualA;
+    }
+    if(opcaoMarcada == 'B'){
+      return getNotaPadrao() * percentualB;
+    }
+    if(opcaoMarcada == 'C'){
+      return getNotaPadrao() * percentualC;
+    }
   }
 
-  @Override
   public void marcaOpcao(char respostaMarcada) {
-    // TODO Auto-generated method stub
-    
+    respostaMarcada = Character.toUpperCase(respostaMarcada);
+    this.opcaoMarcada = respostaMarcada;
+  }
+  @Override
+  public String toStringQuestaoRepostaProporcional() {
+    return "*** Questao de Respostas Proporcionais *** \n" + "Número: " + getIdQuestao() + "\n Enunciado" + getEnunciado() + "\n A - " + getOpcaoA() + " " + percentualA + "\n B - " + getOpcaoB() + " " + percentualB +
+    "\n C - " + getOpcaoC() + percentualC + "\n Nota da Questão: " + getNotaPadrao();
   }
 }

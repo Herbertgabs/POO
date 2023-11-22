@@ -4,20 +4,30 @@ public class QuestaoMultiplaEscolha extends Questao implements IQuestao{
   private char opcaoCorreta;
   private char opcaoMarcada;
 
-  public QuestaoMultiplaEscolha(int idQuestao, String enunciado, String opcaoA, String opcaoB, String opcaoC,
+  public QuestaoMultiplaEscolha(String enunciado, String opcaoA, String opcaoB, String opcaoC,
       double notaPadrao) {
-    super(idQuestao, enunciado, opcaoA, opcaoB, opcaoC, notaPadrao);
+    super(enunciado, opcaoA, opcaoB, opcaoC, notaPadrao);
+  }
+
+  public char getOpcaoMarcada() {
+    return opcaoMarcada;
   }
 
   @Override
   public double calcularNotaObtida() {
-    // TODO Auto-generated method stub
+    if(opcaoCorreta == opcaoMarcada){
+      return getNotaPadrao();
+    }
     return 0;
   }
 
-  @Override
   public void marcaOpcao(char respostaMarcada) {
-    // TODO Auto-generated method stub
-    
+    respostaMarcada = Character.toUpperCase(respostaMarcada);
+    this.opcaoMarcada = respostaMarcada;
+  }
+ @Override
+  public String toStringRespostaMultiplaEscolha() {
+    return "*** Questao de Multipla Escolha *** \n" + "Número: " + getIdQuestao() + "\n Enunciado" + getEnunciado() + "\n A - " + getOpcaoA() + "\n B - " + getOpcaoB + 
+    "\n C - " + getOpcaoC() + "\n Nota da Questão: " + getNotaPadrao();
   }
 }
