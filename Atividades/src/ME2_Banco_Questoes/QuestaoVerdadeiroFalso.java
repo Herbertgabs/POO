@@ -1,5 +1,5 @@
 package ME2_Banco_Questoes;
-public class QuestaoVerdadeiroFalso extends Questao implements IQuestao{
+public class QuestaoVerdadeiroFalso extends Questao{
   private char respostaCorretaA;
   private char respostaCorretaB;
   private char respostaCorretaC;
@@ -8,28 +8,28 @@ public class QuestaoVerdadeiroFalso extends Questao implements IQuestao{
   private char respostaMarcadaC;
 
   public QuestaoVerdadeiroFalso(String enunciado, String opcaoA, String opcaoB, String opcaoC,
-      double notaPadrao) {
+      double notaPadrao, char respostaCorretaA, char respostaCorretaB, char respostaCorretaC) {
     super(enunciado, opcaoA, opcaoB, opcaoC, notaPadrao);
+    this.respostaCorretaA = respostaCorretaA;
+    this.respostaCorretaB = respostaCorretaB;
+    this.respostaCorretaC = respostaCorretaC;
   }
-
   @Override
   public double calcularNotaObtida() {
-    double nota = getNotaPadrao();
+    double notaPadrao = getNotaPadrao() * (1.0 / 3);
     if (respostaMarcadaA == respostaCorretaA) {
-      nota += getNotaPadrao();
+      notaObtida += notaPadrao;
     }
     if (respostaMarcadaB == respostaCorretaB) {
-      nota += getNotaPadrao();
+      notaObtida += notaPadrao;
     }
     if (respostaMarcadaC == respostaCorretaC) {
-      nota += getNotaPadrao();
+      notaObtida += notaPadrao;
     }
-    return nota;
+    return notaObtida;
   }
 
   public void marcaOpcao(char opcao, char respostaMarcada) {
-    respostaMarcada = Character.toUpperCase(respostaMarcada);
-    respostaMarcada = Character.toUpperCase(opcao);
     if(opcao == 'A'){
       this.respostaMarcadaA = respostaMarcada;
     }
@@ -43,7 +43,7 @@ public class QuestaoVerdadeiroFalso extends Questao implements IQuestao{
 
   @Override
   public String toString() {
-    return "*** Questao de Verdadeiro ou Falso ***" + "\n Número: " + getIdQuestao() + "\n Enunciado" + getEnunciado() + "\n A - " + getOpcaoA() + " " + respostaMarcadaA + "\n B - " + getOpcaoB() + " " + respostaMarcadaB + " " +
-    "\n C - " + getOpcaoC() + " " + respostaMarcadaC + "\n Nota da Questão: " + getNotaPadrao();
+    return "*** Questao de Verdadeiro ou Falso *** \n" + "\n Número: " + getIdQuestao() + "\n Enunciado: " + getEnunciado() + "\n A - " + getOpcaoA() + " " + respostaCorretaA + "\n B - " + getOpcaoB() + " " + respostaCorretaB + " " +
+    "\n C - " + getOpcaoC() + " " + respostaCorretaC + "\n Nota da Questão: " + getNotaPadrao();
   }
 }

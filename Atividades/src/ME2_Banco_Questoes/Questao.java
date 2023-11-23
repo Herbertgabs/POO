@@ -19,7 +19,6 @@ public abstract class Questao implements IQuestao{
     this.opcaoB = opcaoB;
     this.opcaoC = opcaoC;
     this.notaPadrao = notaPadrao;
-    this.notaObtida = calcularNotaObtida();
   }
 
   public int getIdQuestao() {

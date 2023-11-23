@@ -1,34 +1,37 @@
 package ME2_Banco_Questoes;
 
-public class QuestaoRespostaProporcional extends Questao implements IQuestao{
+public class QuestaoRespostaProporcional extends Questao{
   private char opcaoMarcada;
-  private dobule percentualA;
-  private dobule percentualB;
-  private dobule percentualC;
+  private double percentualA;
+  private double percentualB;
+  private double percentualC;
 
   public QuestaoRespostaProporcional(String enunciado, String opcaoA, String opcaoB, String opcaoC,
-      double notaPadrao) {
+      double notaPadrao, double percentualA, double percentualB, double percentualC) {
     super(enunciado, opcaoA, opcaoB, opcaoC, notaPadrao);
-    this.percentualA = 0.25;
-    this.percentualB = 0.5;
-    this.percentualC = 1.0;
+    this.percentualA = percentualA;
+    this.percentualB = percentualB;
+    this.percentualC = percentualC;
+    notaObtida = 0;
   }
 
   public char getOpcaoMarcada() {
     return opcaoMarcada;
   }
-
+  
   @Override
   public double calcularNotaObtida() {
+    notaObtida = getNotaPadrao();
     if(opcaoMarcada == 'A'){
-      return getNotaPadrao() * percentualA;
+      notaObtida *= (percentualA/100);
     }
     if(opcaoMarcada == 'B'){
-      return getNotaPadrao() * percentualB;
+      notaObtida *= (percentualB/100);
     }
     if(opcaoMarcada == 'C'){
-      return getNotaPadrao() * percentualC;
+      notaObtida *= (percentualC/100);
     }
+    return notaObtida;
   }
 
   public void marcaOpcao(char respostaMarcada) {
@@ -36,8 +39,10 @@ public class QuestaoRespostaProporcional extends Questao implements IQuestao{
     this.opcaoMarcada = respostaMarcada;
   }
   @Override
-  public String toStringQuestaoRepostaProporcional() {
-    return "*** Questao de Respostas Proporcionais *** \n" + "Número: " + getIdQuestao() + "\n Enunciado" + getEnunciado() + "\n A - " + getOpcaoA() + " " + percentualA + "\n B - " + getOpcaoB() + " " + percentualB +
-    "\n C - " + getOpcaoC() + percentualC + "\n Nota da Questão: " + getNotaPadrao();
+  public String toString() {
+
+    return "*** Questao de Respostas Proporcionais *** \n" + "\n Número: " + getIdQuestao() + "\n Enunciado: " + getEnunciado() + "\n A - " + getOpcaoA() 
+    + " " + percentualA + "\n B - " + getOpcaoB() + " " + percentualB +
+    "\n C - " + getOpcaoC() + " " + percentualC + "\n Nota da Questão: " + getNotaPadrao();
   }
 }
