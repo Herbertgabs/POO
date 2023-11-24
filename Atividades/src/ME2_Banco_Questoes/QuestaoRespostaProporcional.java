@@ -12,7 +12,6 @@ public class QuestaoRespostaProporcional extends Questao{
     this.percentualA = percentualA;
     this.percentualB = percentualB;
     this.percentualC = percentualC;
-    notaObtida = 0;
   }
 
   public char getOpcaoMarcada() {
