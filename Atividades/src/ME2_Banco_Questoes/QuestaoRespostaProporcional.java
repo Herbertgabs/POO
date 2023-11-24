@@ -34,7 +34,6 @@ public class QuestaoRespostaProporcional extends Questao{
   }
 
   public void marcaOpcao(char respostaMarcada) {
-    respostaMarcada = Character.toUpperCase(respostaMarcada);
     this.opcaoMarcada = respostaMarcada;
   }
   @Override
