@@ -13,6 +13,7 @@ public class QuestaoVerdadeiroFalso extends Questao{
     this.respostaCorretaA = respostaCorretaA;
     this.respostaCorretaB = respostaCorretaB;
     this.respostaCorretaC = respostaCorretaC;
+    notaObtida = 0;
   }
   @Override
   public double calcularNotaObtida() {
