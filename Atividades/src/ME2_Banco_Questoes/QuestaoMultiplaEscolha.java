@@ -8,7 +8,6 @@ public class QuestaoMultiplaEscolha extends Questao{
       double notaPadrao,char opcaoCorreta) {
     super(enunciado, opcaoA, opcaoB, opcaoC, notaPadrao);
     this.opcaoCorreta = opcaoCorreta;
-    notaObtida = 0;
   }
 
   public char getOpcaoCorreta() {
