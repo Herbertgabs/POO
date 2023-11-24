@@ -233,7 +233,7 @@ public class AppProva {
 
 				double percentualC = 0;
 
-				if(percentualA == 100 && percentualB == 50 || percentualA == 50 && percentualB == 25){
+				if(percentualA == 100 && percentualB == 50 || percentualA == 50 && percentualB == 100){
 					percentualC = 25.0;
 					questaoRP = new QuestaoRespostaProporcional(enunciado, opcaoA, opcaoB, opcaoC, valorPadrao, percentualA, percentualB, percentualC);
 					System.out.println(questaoRP.toString());
